@@ -6,9 +6,13 @@ var lib = require('cometd');
 var cometd = new lib.CometD();
 
 cometd.configure({
-    url: 'http://michaelmurphy-eval-test.apigee.net/subtostream3/cometd:80'
-    // url: 'http://localhost/cometd:80'
+    // url: 'http://michaelmurphy-eval-test.apigee.net/subtostream3/cometd:80'
+    url: 'http://localhost/cometd:9000'
 });
+// cometd.addListener('/event/Test__e', function(message) {
+//     console.dir(message);
+// });
+
 
 
 cometd.handshake(function(handshakeReply) {
@@ -25,6 +29,10 @@ cometd.handshake(function(handshakeReply) {
             console.log('subscribed');
             console.dir(subscribeReply);
         });
+
+
+    } else {
+        console.dir(handshakeReply);
     }
 });
 
